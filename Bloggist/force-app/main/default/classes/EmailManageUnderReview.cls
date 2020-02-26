@@ -1,5 +1,6 @@
 public class EmailManageUnderReview implements Schedulable{
     public void execute(SchedulableContext SC){
+        //Have process more than50K records
         searchManagerAndPost();
     }
     //Method to search the manager of the post with under review status
@@ -23,8 +24,6 @@ public class EmailManageUnderReview implements Schedulable{
                         String body = 'Dear  manager, ' +  '\n';
                         body += 'This email is to remember you about the posts you need to evaluate.' +  '\n';
                         body += 'please check this post->' + mypostID.Name +  '\n';
-                        body += 'Best,' +  '\n';
-                        body += 'System ';
                         sendMail(address,subject, body);
                         
                 	}
@@ -43,19 +42,26 @@ public class EmailManageUnderReview implements Schedulable{
     
     // Public method to send emails
     public void sendMail(String address, String subject, String body) {
-        // Create an email message object
-        Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-        String[] toAddresses = new String[] {address};
-        mail.setToAddresses(toAddresses);
-        mail.setSubject(subject);
-        mail.setPlainTextBody(body);
-        // Pass this email message to the built-in sendEmail method 
-        // of the Messaging class
-        Messaging.SendEmailResult[] results = Messaging.sendEmail(
-                                 new Messaging.SingleEmailMessage[] { mail });
         
-        // Call a helper method to inspect the returned results
-        inspectResults(results);
+        try{
+            // Create an email message object
+            Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+            String[] toAddresses = new String[] {address};
+            mail.setToAddresses(toAddresses);
+            mail.setSubject(subject);
+            mail.setPlainTextBody(body);
+            // Pass this email message to the built-in sendEmail method 
+            // of the Messaging class
+            Messaging.SendEmailResult[] results = Messaging.sendEmail(
+                                     new Messaging.SingleEmailMessage[] { mail });
+            
+            // Call a helper method to inspect the returned results
+            inspectResults(results);
+        }
+        catch(System.EmailException e){
+            System.debug('A email exception as ocurred :'+ e);
+            
+        }
     }
     
     // Helper method
