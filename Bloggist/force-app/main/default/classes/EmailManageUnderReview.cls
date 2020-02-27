@@ -1,26 +1,28 @@
 public class EmailManageUnderReview implements Schedulable{
+
     public void execute(SchedulableContext SC){
         //Have process more than50K records
         searchManagerAndPost();
     }
+
     //Method to search the manager of the post with under review status
     public void searchManagerAndPost(){
     	try {
             //Posters with under review status
-			List<Posts__c> mypost = [SELECT Id, Name,Status__c,Writer__c,CreatedById
+			List<Posts__c> mypost = [ SELECT Id, Name, Status__c, Writer__c, CreatedById
             	FROM Posts__c
                 WHERE Status__c = 'Under Review'];
-            for (Integer i = 0;i<= mypost.size(); i++) {
-                Posts__c mypostID=mypost[i];
+            for ( Integer i = 0; i<= mypost.size(); i++ ) {
+                Posts__c mypostID = mypost[i];
                 //Manager that will receive the emails
-                List<User> mymanagers=[Select Id, ManagerId , Manager.Name ,Manager.Email, Email
+                List<User> mymanagers = [ Select Id, ManagerId, Manager.Name, Manager.Email, Email
                                           FROM User 
-                                          Where Id= :mypostID.CreatedById];
-                for (Integer e = 0;e<= mymanagers.size(); e++) {
-                	User myUser=mymanagers[e];
-                    if(myUser.Manager.Email!=null){
+                                          Where Id =: mypostID.CreatedById ];
+                for ( Integer e = 0; e<= mymanagers.size(); e++ ) {
+                	User myUser = mymanagers[e];
+                    if(myUser.Manager.Email != null){
                     	String address = myUser.Manager.Email;
-                        String subject='Remain Under Review Posts';
+                        String subject = 'Remain Under Review Posts';
                         String body = 'Dear  manager, ' +  '\n';
                         body += 'This email is to remember you about the posts you need to evaluate.' +  '\n';
                         body += 'please check this post->' + mypostID.Name +  '\n';
