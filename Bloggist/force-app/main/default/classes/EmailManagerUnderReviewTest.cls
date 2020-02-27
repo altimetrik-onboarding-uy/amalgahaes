@@ -1,8 +1,8 @@
-@isTest(SeeAllData=true)
+@isTest
 private class EmailManagerUnderReviewTest {
 
     //Test at least 75% of the code
-    
+
     //test1 schedule
     @isTest
     static testMethod void testSchedule(){
