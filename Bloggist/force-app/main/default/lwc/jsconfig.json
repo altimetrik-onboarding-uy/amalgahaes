@@ -2,7 +2,14 @@
     "compilerOptions": {
         "experimentalDecorators": true,
         "baseUrl": ".",
-        "paths": {}
+        "paths": {
+            "c/markdownComponent": [
+                "markdownComponent/markdownComponent.js"
+            ],
+            "c/MarkdownComponent": [
+                "MarkdownComponent/MarkdownComponent.js"
+            ]
+        }
     },
     "include": [
         "**/*",
