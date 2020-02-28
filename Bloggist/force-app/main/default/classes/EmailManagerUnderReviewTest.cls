@@ -4,7 +4,7 @@ private class EmailManagerUnderReviewTest {
     //Test at least 75% of the code
 
     //test1 schedule
-    
+    @Test
     static testMethod void testSchedule(){
         EmailManageUnderReview myemailclass = new EmailManageUnderReview();
         Test.startTest();
@@ -15,7 +15,7 @@ private class EmailManagerUnderReviewTest {
     }
     
     //Test 2 for when we send emails part 
-    
+    @Test
     static testMethod void testEmailsPost(){
         EmailManageUnderReview myemailclass = new EmailManageUnderReview();
         Test.startTest();
@@ -26,7 +26,7 @@ private class EmailManagerUnderReviewTest {
     }
     
     //Test 3 posts class
-    
+    @Test
     static testmethod void dataBaseInsert() {
         // Query an existing account in the organization.
        	Posts__c a = [ SELECT Id, Name, Writer__c FROM Posts__c WHERE Name = 'post' LIMIT 1];
