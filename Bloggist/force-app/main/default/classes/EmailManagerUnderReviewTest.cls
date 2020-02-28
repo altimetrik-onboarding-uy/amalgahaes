@@ -4,8 +4,7 @@ private class EmailManagerUnderReviewTest {
     //Test at least 75% of the code
 
     //test1 schedule
-    @isTest
-    static testMethod void testSchedule(){
+    @isTest  static void testSchedule(){
         EmailManageUnderReview myemailclass = new EmailManageUnderReview();
         Test.startTest();
         SchedulableContext SC;
@@ -15,8 +14,7 @@ private class EmailManagerUnderReviewTest {
     }
     
     //Test 2 for when we send emails part 
-    @isTest
-    static testMethod void testEmailsPost(){
+    @isTest static void testEmailsPost(){
         EmailManageUnderReview myemailclass = new EmailManageUnderReview();
         Test.startTest();
         myemailclass.sendMail('amagalhaes@altimetrik.com', 'test', 'body');
@@ -26,8 +24,7 @@ private class EmailManagerUnderReviewTest {
     }
     
     //Test 3 posts class
-    @isTest
-    static testmethod void dataBaseInsert() {
+    @isTest  static  void dataBaseInsert() {
         // Query an existing account in the organization.
        	Posts__c a = [ SELECT Id, Name, Writer__c FROM Posts__c WHERE Name = 'post' LIMIT 1];
         System.assert(a != null);   
