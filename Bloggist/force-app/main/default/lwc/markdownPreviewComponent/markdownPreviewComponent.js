@@ -5,7 +5,7 @@ import { loadScript } from 'lightning/platformResourceLoader';
 //Reference to the markedjs library
 import MARKED_JS from '@salesforce/resourceUrl/marked';
 
-export default class MarkdownPreview extends LightningElement {
+export default class MarkdownPreviewComponent extends LightningElement {
     //To ensure we call third party library onces
     isRendered = false;
     _body = '';

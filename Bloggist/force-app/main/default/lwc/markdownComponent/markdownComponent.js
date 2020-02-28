@@ -1,6 +1,6 @@
 import { LightningElement,track } from 'lwc';
 
-export default class MarkdownComponent extends LightningElement {
+export default class markdownComponent extends LightningElement {
 
     @track body;
 
