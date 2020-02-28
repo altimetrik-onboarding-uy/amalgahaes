@@ -8,6 +8,9 @@
             ],
             "c/MarkdownComponent": [
                 "MarkdownComponent/MarkdownComponent.js"
+            ],
+            "c/markdownPreviewComponent": [
+                "markdownPreviewComponent/markdownPreviewComponent.js"
             ]
         }
     },
