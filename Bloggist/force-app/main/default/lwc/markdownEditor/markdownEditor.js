@@ -1,9 +1,8 @@
 import { LightningElement, track } from 'lwc';
+export default class MyComponentName extends LightningElement {
+    @track richtext = "<h2>Default <s>Value</s></h2>";
 
-export default class MarkdownEditor extends LightningElement {
-    @track body;
-
-    handleBodyChange(event) {
-        this.body = event.target.value;
+    handleChange(e) {
+        this.richtext = e.detail.value;
     }
 }
