@@ -3,14 +3,8 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
-            "c/markdownComponent": [
-                "markdownComponent/markdownComponent.js"
-            ],
-            "c/MarkdownComponent": [
-                "MarkdownComponent/MarkdownComponent.js"
-            ],
-            "c/markdownPreviewComponent": [
-                "markdownPreviewComponent/markdownPreviewComponent.js"
+            "c/markdownEditor": [
+                "../../../../markdown-editor/force-app/main/default/lwc/markdownEditor/markdownEditor.js"
             ]
         }
     },
