@@ -31,7 +31,7 @@ export default class MarkdownPreview extends LightningElement {
             });
     }
 
-    renderMarkdown() {
-        this.template.querySelector('div').innerHTML = marked(this.body);
-    }
+    //renderMarkdown() {
+       // this.template.querySelector('div').innerHTML = marked(this.body);
+   // }
 }
