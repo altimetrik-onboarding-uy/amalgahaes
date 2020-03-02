@@ -3,7 +3,7 @@
     <apiVersion>45.0</apiVersion>
     <isExposed>true</isExposed>
     <masterLabel>Markdown Editor</masterLabel>
-    <description>A simple markdown text editor.</description>
+    <description>A markdown text editor.</description>
     <targets>
         <target>lightning__AppPage</target>
     </targets>
