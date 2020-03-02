@@ -4,7 +4,7 @@ import MARKED_JS from '@salesforce/resourceUrl/marked';
 
 export default class MarkdownPreview extends LightningElement {
     isRendered = false;
-    
+    _body = '';
     @api
     get body() {
         return this._body;
