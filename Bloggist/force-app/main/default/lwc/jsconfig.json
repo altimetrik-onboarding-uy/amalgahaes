@@ -5,6 +5,9 @@
         "paths": {
             "c/markdownEditor": [
                 "markdownEditor/markdownEditor.js"
+            ],
+            "c/markdownPreview": [
+                "markdownPreview/markdownPreview.js"
             ]
         }
     },
