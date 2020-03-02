@@ -2,11 +2,7 @@
     "compilerOptions": {
         "experimentalDecorators": true,
         "baseUrl": ".",
-        "paths": {
-            "c/markdownEditor": [
-                "markdownEditor/markdownEditor.js"
-            ]
-        }
+        "paths": {}
     },
     "include": [
         "**/*",
