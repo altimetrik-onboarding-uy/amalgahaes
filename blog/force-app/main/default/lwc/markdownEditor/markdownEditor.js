@@ -1,36 +1,9 @@
-import { LightningElement, api } from 'lwc';
-import { loadScript } from 'lightning/platformResourceLoader';
-import MARKED_JS from '@salesforce/resourceUrl/marked';
+import { LightningElement, track } from 'lwc';
 
 export default class MarkdownEditor extends LightningElement {
-    isRendered = false;
-    _body = '';
-    @api
-    get body() {
-        return this._body;
-    }
-    set body(value) {
-        this._body = value;
+    @track body;
 
-        if (this.isRendered) {
-            this.renderMarkdown();
-        }
-    }
-
-    renderedCallback() {
-        if (this.isRendered) {
-            return;
-        }
-
-        this.isRendered = true;
-
-        loadScript(this, MARKED_JS)
-            .then(() => {
-                this.renderMarkdown();
-            });
-    }
-
-    renderMarkdown() {
-        this.template.querySelector('div').innerHTML = marked(this.body);
+    handleBodyChange(event) {
+        this.body = event.target.value;
     }
 }
