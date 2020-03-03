@@ -2,18 +2,17 @@
     <lightning-card title="Markdown Editor">
         <lightning-layout>
             <lightning-layout-item size="6" padding="around-small">
-                <!--We use text area and asigned the body handle to handle the properties-->>
                 <textarea
-                    class="slds-textarea"
+                    class="slds-textarea slds-text-font_monospace"
                     onchange={handleBodyChange}
                     onkeyup={handleBodyChange}
                     rows="20"
                 ></textarea>
             </lightning-layout-item>
+
             <lightning-layout-item size="6" padding="around-small">
-                <!-- We put the body here,we call the preview component so we can use markdown -->
-                {body} <!-- markdown preview placeholder -->
-                <!--<c-markdown-preview body={body}></c-markdown-previewbody></c-markdown-preview>-->
+                {body}
+                <!--<c-markdown-preview body={body}></c-markdown-preview>-->
             </lightning-layout-item>
         </lightning-layout>
     </lightning-card>
