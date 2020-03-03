@@ -1,5 +1,16 @@
 <template>
     <lightning-card title="Markdown Editor">
+
+        
+        <lightning-input-rich-text
+        value={richtext}
+        onchange={handleChange}
+    ></lightning-input-rich-text>
+    <lightning-formatted-rich-text
+        value={richtext}
+    ></lightning-formatted-rich-text>
+
+
         <lightning-layout>
             <lightning-layout-item size="6" padding="around-small">
                 <textarea
