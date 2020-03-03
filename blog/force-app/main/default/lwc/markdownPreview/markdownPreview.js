@@ -1,10 +1,11 @@
-import { LightningElement, api } from 'lwc';
-import { loadScript } from 'lightning/platformResourceLoader';
-import MARKED_JS from '@salesforce/resourceUrl/marked';
+import { LightningElement, api } from 'lwc';//similar to the track decorate
+import { loadScript } from 'lightning/platformResourceLoader';//function that loads third party libraries
+import MARKED_JS from '@salesforce/resourceUrl/marked';//reference to staticresource marked that i upload in salesforce
 
 export default class MarkdownPreview extends LightningElement {
     isRendered = false;
     _body = '';
+    //The body set y get is caller everytime the body changes not only once 
     @api
     get body() {
         return this._body;
@@ -16,7 +17,7 @@ export default class MarkdownPreview extends LightningElement {
             this.renderMarkdown();
         }
     }
-
+    //here we call the markdown library that will be in container div
     renderedCallback() {
         if (this.isRendered) {
             return;
