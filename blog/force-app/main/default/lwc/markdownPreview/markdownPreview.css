@@ -30,7 +30,7 @@ table {
 table th,
 table td {
     border: 1px solid #dddbda;
-    padding: 0.5em;
+    padding: 0.5em;   
 }
 
 table th[align="left"],
