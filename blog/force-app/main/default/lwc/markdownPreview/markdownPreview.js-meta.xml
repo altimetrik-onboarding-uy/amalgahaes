@@ -2,6 +2,5 @@
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata" fqn="MarkdownPreview">
     <apiVersion>45.0</apiVersion>
     <isExposed>false</isExposed>
-    <ltng:require scripts="{!join(',', 
-                           $Resource.markdown.js)}"></ltng:require>
+    
 </LightningComponentBundle>
