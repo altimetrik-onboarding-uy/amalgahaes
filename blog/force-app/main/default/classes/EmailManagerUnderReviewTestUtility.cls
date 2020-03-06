@@ -14,9 +14,9 @@ public class EmailManagerUnderReviewTestUtility {
         List<Contact> cons = new List<Contact>();
         accts.add(acoun);
         insert accts;
-        Contact contac= new Contact(firstname='Test',
-                                     lastname='Test',
-                                     AccountId=acoun.Id);
+        Contact contac= new Contact(firstname = 'Test',
+                                     lastname = 'Test',
+                                     AccountId = acoun.Id);
         cons.add(contac);
         insert cons;
 
