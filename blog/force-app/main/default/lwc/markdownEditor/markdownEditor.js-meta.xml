@@ -8,6 +8,5 @@
         <target>lightning__AppPage</target>
     </targets>
     <ltng:require scripts="{!join(',', 
-                           $Resource.marked.js, 
-                           )}"></ltng:require>
+                           $Resource.markdown.js)}"></ltng:require>
 </LightningComponentBundle>
