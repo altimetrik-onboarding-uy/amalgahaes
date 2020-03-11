@@ -1,19 +1,20 @@
 <aura:component implements = "force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access = "global" >
-    <ltng:require scripts="{!$Resource.markedJS}" styles="{!$Resource.markedCSS}"></ltng:require>          
     
-    <aura:attribute name = "myValMarkdown" type = "String" />
+    <ltng:require scripts = "{!$Resource.markedJS}" styles = "{!$Resource.markedCSS}"></ltng:require>
+                
+    <aura:attribute name = "myVal" type = "String" />
     
-    <aura:handler name = "initMarkdown" value = "{! this }" action = "{! c.initMarkdown }"/>
+    <aura:handler name = "init" value = "{! this }" action = "{! c.init }"/>
     
     <lightning:card title = "Post Content">
         <lightning:layout>
             <lightning:layoutItem size = "6" padding = "around-small">
-                <lightning:input type = "text" value = "{!v.myValMarkdown}" default = " " placeholder = "Type something interesting"/>
+                <lightning:input type = "text" value = "{!v.myVal}" default = " " placeholder = "Type something interesting"/>
                 <h1 class = "slds-m-top_large slds-text-heading_medium"></h1>
             </lightning:layoutItem>
              <lightning:layoutItem size = "6" padding = "around-small">
                 <div aura:id = "output" class = "slds-box editor slds-text-longform">
-                    <lightning:formattedRichText value = "{!v.myValMarkdown}" />
+                    <lightning:formattedRichText value = "{!v.myVal}" />
                 </div>
              </lightning:layoutItem>    
         </lightning:layout>
