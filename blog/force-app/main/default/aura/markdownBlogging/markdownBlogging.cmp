@@ -12,7 +12,7 @@
                 <!--<lightning:input type = "text" value = "{!v.myVal}"  onchange="{!c.onChangeMarkdown}" default = " " placeholder = "Type something interesting"/>
                 <h1 class = "slds-m-top_large slds-text-heading_medium"></h1>-->
                 <lightning:textarea class="slds-textarea slds-text-font_monospace" default = " " name="myTextArea"  placeholder = "Type something interesting" value = "{!v.myVal}"
-                onchange="{!c.onChangeMarkdown}" onkeyup={onChangeMarkdown} rows="20" />
+                onchange="{!c.onChangeMarkdown}"  rows="20" />
             </lightning:layoutItem>
              <lightning:layoutItem size = "6" padding = "around-small">
                 <!--<div aura:id = "output" class = "slds-box editor slds-text-longform">-->
@@ -26,7 +26,7 @@
 
 
 
-     
+
     
    <!--Path-->
    <!--

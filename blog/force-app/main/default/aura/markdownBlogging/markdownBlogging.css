@@ -1,49 +1,81 @@
-.h1, h2, h3, h4, h5, h6, p, ul, ol, table {
+.THIS h1{
     margin-bottom: 1rem;
 }
+.THIS h2{
+    margin-bottom: 1rem;
+}
+.THIS h3{
+    margin-bottom: 1rem;
+}
+.THIS h4{
+    margin-bottom: 1rem;
+}
+.THIS h5{
+    margin-bottom: 1rem;
+}
+.THIS h6{
+    margin-bottom: 1rem;
+}
+.THIS p{
+    margin-bottom: 1rem;
+}
+.THIS ul{
+    margin-bottom: 1rem;
+}
+.THIS ol{
+    margin-bottom: 1rem;
+}
+.THIS table{
+    margin-bottom: 1rem;
+} 
+.THIS h1 { border-bottom: 1px solid #dddbda; }
+.THIS h2 { border-bottom: 1px solid #dddbda; }
 
-.h1, h2 { border-bottom: 1px solid #dddbda; }
+.THIS h1 { font-size: 3.5em; }
+.THIS h2 { font-size: 3.0em; }
+.THIS h3 { font-size: 2.5em; }
+.THIS h4 { font-size: 2.0em; }
+.THIS h5 { font-size: 1.5em; }
+.THIS h6 { font-size: 1.0em; }
 
-.h1 { font-size: 3.5em; }
-.h2 { font-size: 3.0em; }
-.h3 { font-size: 2.5em; }
-.h4 { font-size: 2.0em; }
-.h5 { font-size: 1.5em; }
-.h6 { font-size: 1.0em; }
+.THIS h5 { font-weight: bold; }
+.THIS h6 { font-weight: bold; }
 
-.h5, h6 { font-weight: bold; }
+.THIS ul { margin-left: 2em; }
+.THIS ol { margin-left: 2em; }
+.THIS ul { list-style-type: disc; }
+.THIS ol { list-style-type: decimal; }
 
-.ul, ol { margin-left: 2em; }
-.ul { list-style-type: disc; }
-.ol { list-style-type: decimal; }
-
-.pre {
+.THIS pre {
     padding: 1rem;
     background: #f8f8f8;
 }
 
-.table {
+.THIS table {
     border: 1px solid #dddbda;
     border-collapse: collapse;
 }
 
-.table th,
-.table td {
+.THIS table th{
+    border: 1px solid #dddbda;
+    padding: 0.5em;
+}
+.THIS table td {
     border: 1px solid #dddbda;
     padding: 0.5em;
 }
 
-.table th[align="left"],
-.table td[align="left"] {
+.THIS  table th[align="left"],
+.THIS  table td[align="left"] {
     text-align: left;
 }
 
-.table th[align="right"],
-.table td[align="right"] {
+.THIS  table th[align="right"],
+.THIS table td[align="right"] {
     text-align: right;
 }
 
-.table th[align="center"],
-.table td[align="center"] {
+.THIS table th[align="center"],
+.THIS table td[align="center"] {
     text-align: center;
 }
