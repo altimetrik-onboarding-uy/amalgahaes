@@ -12,7 +12,7 @@
         //var test;
          var myResource = $A.get('$Resource.marked') + 'marked.js';
         
-        evt._body.set(this.template.querySelector('div').innerHTML,myResource.marked(_body));
+        evt._body.set(this.template.querySelector('div').innerHTML,myResource.querySelector('div'));
         
         
     },
