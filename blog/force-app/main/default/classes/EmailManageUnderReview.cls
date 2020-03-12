@@ -10,24 +10,18 @@ public class EmailManageUnderReview implements Schedulable{
     	try {
             //Posters with under review status
 			List<Posts__c> mypost = [ SELECT Id, Name, Status__c, Writer__c, CreatedById
-            	FROM Posts__c
-                WHERE Status__c = 'Under Review'];
+            	FROM Posts__c WHERE Status__c = 'Under Review'];
             for ( Integer i = 0; i<= mypost.size(); i++ ) {
                 Posts__c mypostID = mypost[i];
                 //Manager that will receive the emails
-                List<User> mymanagers = [ Select Id, ManagerId, Manager.Name, Manager.Email, Email
-                                          FROM User 
-                                          Where Id =: mypostID.CreatedById ];
+                List<User> mymanagers = [ Select Id, ManagerId, Manager.Name, Manager.Email, Email FROM User Where Id =: mypostID.CreatedById ];
                 for ( Integer e = 0; e<= mymanagers.size(); e++ ) {
                 	User myUser = mymanagers[e];
                     if(myUser.Manager.Email != null){
                     	String address = myUser.Manager.Email;
                         String subject = 'Remain Under Review Posts';
-                        String body = 'Dear  manager, ' +  '\n';
-                        body += 'This email is to remember you about the posts you need to evaluate.' +  '\n';
-                        body += 'please check this post->' + mypostID.Name +  '\n';
-                        sendMail(address,subject, body);
-                        
+                        String body = 'Dear  manager, ' +  '\n'+ 'please review this post->' + mypostID.Name +  '\n';
+                        sendMail(address,subject, body);                        
                 	}
                 }
                 
@@ -77,11 +71,7 @@ public class EmailManageUnderReview implements Schedulable{
         for (Messaging.SendEmailResult res : results) {
             if (res.isSuccess()) {
                 System.debug('Email sent successfully');
-            }
-            else {
-                sendResult = false;
-                System.debug('The following errors occurred: ' + res.getErrors());                 
-            }
+            }      
         }
         
         return sendResult;

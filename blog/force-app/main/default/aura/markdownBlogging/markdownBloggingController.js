@@ -10,7 +10,7 @@
         //var myColor = event.getSource().get("v.value");
         
         //var test;
-         var myResource = $A.get('$Resource.marked') + 'marked.js';
+        var myResource = $A.get('$Resource.marked') + 'marked.js';
         
         evt._body.set(this.template.querySelector('div').innerHTML,myResource.querySelector('div'));
         

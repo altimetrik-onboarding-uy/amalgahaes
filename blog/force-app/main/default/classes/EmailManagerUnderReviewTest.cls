@@ -22,21 +22,27 @@ private class EmailManagerUnderReviewTest {
         Test.stopTest();
         system.assertEquals(1, invocations, 'An email should be sent');
     }
-    
-    //Test 3 posts class
-    @isTest  static  void dataBaseInsert() {
-        // Query an existing account in the organization.
-       	Posts__c a = [ SELECT Id, Name, Writer__c FROM Posts__c WHERE Name = 'post' LIMIT 1];
-        System.assert(a != null);   
-        // Create a test account based on the queried account.
-        Posts__c testPost = a.clone();
-        testPost.Name = 'Test';
-        testPost.Writer__c = '0036g00000AT36HAAT';
-        insert testPost;
-        // Query the test account that was inserted.
-        Posts__c testPost2 = [ SELECT Id, Name, Writer__c FROM Posts__c
-                                WHERE Name = 'Test' LIMIT 1];
-        System.assert(testPost2 != null);
+     //Test 3 for when we send emails part 
+    @isTest static void testEmailsPost2(){
+        EmailManageUnderReview myemailclass = new EmailManageUnderReview();
+        Test.startTest();
+        myemailclass.sendMail('', '', '');
+        Integer invocations = Limits.getEmailInvocations();
+        Test.stopTest();
+        system.assertEquals(0, invocations);
     }
+    
+     //Test 4 posts class
+     @isTest static void testEmailsPost4(){
+        EmailManageUnderReview myemailclass = new EmailManageUnderReview();
+        Test.startTest();
+        myemailclass.searchManagerAndPost();
+        Integer invocations = Limits.getEmailInvocations();
+        Test.stopTest();
+        system.assertEquals(0, invocations);
+    }
+    
+     
+    
        
 }
