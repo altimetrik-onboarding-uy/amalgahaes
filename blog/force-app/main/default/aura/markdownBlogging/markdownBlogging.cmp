@@ -3,7 +3,9 @@
     <ltng:require scripts = "{!$Resource.markedJS}" styles = "{!$Resource.markedCSS}"></ltng:require>
                 
     <aura:attribute name = "myVal" type = "String" />
-    
+
+    <!--<aura:attribute name="recordId" type="String" />-->
+
     <aura:handler name = "init" value = "{! this }" action = "{! c.init }"/>
     
     <lightning:card title = "Post Content">
