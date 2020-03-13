@@ -1,34 +1,60 @@
 <aura:component implements = "force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access = "global" >
     <!--Call the markdown resource-->
-    <ltng:require scripts = "{!$Resource.markedJS}" styles = "{!$Resource.markedCSS}"></ltng:require>
-    <!--Create a attribute to use in the text section-->            
-    <aura:attribute name = "myVal" type = "String" />
+    <ltng:require scripts="{!$Resource.markedJS}" styles="{!$Resource.markedCSS}"></ltng:require>
+    <!--Create a attribute to use in the text section with markdown format-->            
+    <aura:attribute name = "myVal" type = "String" description = "This is the text to be displayed" />
+    <!--view object record to be displayed-->>
+    <aura:attribute name = "record" type = "Object"/>
+    <!--Attribute to handle record errors-->>
+    <aura:attribute name = "youError" type = "String"/>
     <!--Handle to the action-->
     <aura:handler name = "init" value = "{! this }" action = "{! c.init }"/>
+    <!--Targed to errors-->>
+    <force:recordData aura:id="recordEditor" layoutType="FULL" recordId="{!v.recordId}" targetError="{!v.youError}"
+        targetRecord="{!v.myVal}" targetFields="{!v.record}" mode="EDIT" />
     <!--Object title -->>
     <lightning:card title = "Post Content">
+      <!--Path Status component-->
+      
+
+
       <!--Create a layout to the page-->
         <lightning:layout>
             <lightning:layoutItem size = "6" padding = "around-small">
-                <!--<lightning:textarea 
-                class="slds-textarea slds-text-font_monospace" default = " " 
-                name="myTextArea"  placeholder = "Type something interesting"
-                value = "{!v.myVal}"
-                onchange="{!c.onChangeMarkdown}"  rows="20" >
-                </lightning:textarea>-->
-                
-             
-                <lightning:textarea
-                class="slds-textarea slds-text-font_monospace" default = " " 
-                name="myTextArea"  placeholder = "Type something interesting"
-                value = "{!v.myVal}">
-                </lightning:textarea>
-
+              <!--Handle shortcuts-->>
+              <span onkeypress="{!c.handleKeyShortCut}">
+                  <!--Text Area to write something in the left-->>
+                  <lightning:textarea
+                      class="slds-textarea slds-text-font_monospace" default = " " 
+                      name="myTextArea"  placeholder = "Type something interesting"
+                      value = "{!v.myVal}" messageWhenValueMissing = "An empty content cannot be saved." 
+                      onchange="{!c.handleSaveRecord}">
+                  </lightning:textarea>
+              </span>
+              <!---->
+              <!--Handle text to submit with button-->>
+              <aura:if isTrue="{!v.record.Status__c=='Draft'}">
+                        <lightning:button label="Submit your post for review" variant="brand" onclick="{!c.handleSubmitReview}" />
+                        <aura:set attribute="else">
+                            <aura:if isTrue="{!v.record.Status__c=='Ready'}">
+                                <lightning:button label="Submit your post for publish" variant="brand" onclick="{!c.handleSubmitPublish}" />
+                            </aura:if>
+                        </aura:set>
+              </aura:if>
             </lightning:layoutItem>
-              <lightning:layoutItem size = "6" padding = "around-small">
+            <!--Right side -->>
+            <lightning:layoutItem size = "6" padding = "around-small">
                 <!--Preview view for the component -->
-                <lightning:formattedText value = "{!v.myVal}" />
-             </lightning:layoutItem>    
+                <lightning:formattedText value = "{!v.myVal}" class="markdown-body" >
+                  <aura:unescapedHtml value="{!v.markDownText}" />
+                </lightning:formattedText>
+             </lightning:layoutItem> 
+             <!--Handle for errors-->> 
+             <aura:if isTrue="{!not(empty(v.recordError))}">
+                <div class="recordError">
+                    {!v.yourError}
+                </div>
+            </aura:if>
         </lightning:layout>
      </lightning:card>
 
@@ -90,7 +116,5 @@
   	</div>
 	</article>-->
     
-     <!--Button to submit the content
-   	<lightning:button variant = "brand" label = "Submit" title = "Success" onclick = "{! c.handleSubmit }"/>
-    -->
+     
 </aura:component>
