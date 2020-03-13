@@ -1,25 +1,33 @@
 <aura:component implements = "force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access = "global" >
-    
+    <!--Call the markdown resource-->
     <ltng:require scripts = "{!$Resource.markedJS}" styles = "{!$Resource.markedCSS}"></ltng:require>
-                
+    <!--Create a attribute to use in the text section-->            
     <aura:attribute name = "myVal" type = "String" />
-
-    <!--<aura:attribute name="recordId" type="String" />-->
-
+    <!--Handle to the action-->
     <aura:handler name = "init" value = "{! this }" action = "{! c.init }"/>
-    
+    <!--Object title -->>
     <lightning:card title = "Post Content">
+      <!--Create a layout to the page-->
         <lightning:layout>
             <lightning:layoutItem size = "6" padding = "around-small">
-                <!--<lightning:input type = "text" value = "{!v.myVal}"  onchange="{!c.onChangeMarkdown}" default = " " placeholder = "Type something interesting"/>
-                <h1 class = "slds-m-top_large slds-text-heading_medium"></h1>-->
-                <lightning:textarea class="slds-textarea slds-text-font_monospace" default = " " name="myTextArea"  placeholder = "Type something interesting" value = "{!v.myVal}"
-                onchange="{!c.onChangeMarkdown}"  rows="20" />
+                <!--<lightning:textarea 
+                class="slds-textarea slds-text-font_monospace" default = " " 
+                name="myTextArea"  placeholder = "Type something interesting"
+                value = "{!v.myVal}"
+                onchange="{!c.onChangeMarkdown}"  rows="20" >
+                </lightning:textarea>-->
+                
+             
+                <lightning:textarea
+                class="slds-textarea slds-text-font_monospace" default = " " 
+                name="myTextArea"  placeholder = "Type something interesting"
+                value = "{!v.myVal}">
+                </lightning:textarea>
+
             </lightning:layoutItem>
-             <lightning:layoutItem size = "6" padding = "around-small">
-                <!--<div aura:id = "output" class = "slds-box editor slds-text-longform">-->
-                    <lightning:formattedRichText value = "{!v.myVal}" />
-                <!--</div>-->
+              <lightning:layoutItem size = "6" padding = "around-small">
+                <!--Preview view for the component -->
+                <lightning:formattedText value = "{!v.myVal}" />
              </lightning:layoutItem>    
         </lightning:layout>
      </lightning:card>
