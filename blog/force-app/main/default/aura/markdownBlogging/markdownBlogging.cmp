@@ -22,16 +22,13 @@
         <lightning:layout>
             <lightning:layoutItem size = "6" padding = "around-small">
               <!--Handle shortcuts-->>
-              <span onkeypress="{!c.handleKeyShortCut}">
-                  <!--Text Area to write something in the left-->>
-                  <lightning:textarea
+                <!--Text Area to write something in the left-->>
+                <lightning:textarea
                       class="slds-textarea slds-text-font_monospace" default = " " 
                       name="myTextArea"  placeholder = "Type something interesting"
-                      value = "{!v.myVal}" messageWhenValueMissing = "An empty content cannot be saved." 
+                      value="{!v.record.Content__c}" messageWhenValueMissing = "An empty content cannot be saved." 
                       onchange="{!c.handleSaveRecord}">
                   </lightning:textarea>
-              </span>
-              <!---->
               <!--Handle text to submit with button-->>
               <aura:if isTrue="{!v.record.Status__c=='Draft'}">
                         <lightning:button label="Submit your post for review" variant="brand" onclick="{!c.handleSubmitReview}" />
