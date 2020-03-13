@@ -1,7 +1,8 @@
 ({
     init: function (component, event, helper) {
-        if (component.get('v.record') != 'undefined')
-        component.set('v.myVal', helper.formatterTextMarkdown(component.get('v.record').Content__c));
+        if (component.get('v.record') != 'undefined'){
+            component.set('v.myVal', helper.formatterTextMarkdown(component.get('v.record').Content__c));
+        }
     },
     handleKeyShortCut: function (component, event, helper) {
         helper.keyShortCut(component, event);

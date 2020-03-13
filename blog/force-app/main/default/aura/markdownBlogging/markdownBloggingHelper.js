@@ -25,19 +25,19 @@
 		switch (event.which) {
 			case 2:
 				console.log('Ctrl+B key pressed');
-				component.set('v.simpleRecord.Content__c', component.get('v.simpleRecord.Content__c') + '****')
+				component.set('v.record.Content__c', component.get('v.record.Content__c') + '****')
 				break;
 			case 9:
 				console.log('Ctrl+I key pressed');
-				component.set('v.simpleRecord.Content__c', component.get('v.simpleRecord.Content__c') + '**')
+				component.set('v.record.Content__c', component.get('v.record.Content__c') + '**')
 				break;
 			case 10:
 				console.log('Ctrl+M key pressed');
-				component.set('v.simpleRecord.Content__c', component.get('v.simpleRecord.Content__c') + '``')
+				component.set('v.record.Content__c', component.get('v.record.Content__c') + '``')
 				break;
 			case 12:
 				console.log('Ctrl+Shift+L key pressed');
-				component.set('v.simpleRecord.Content__c', component.get('v.simpleRecord.Content__c') + '``````')
+				component.set('v.record.Content__c', component.get('v.record.Content__c') + '``````')
 				break;
 		}
 	},
