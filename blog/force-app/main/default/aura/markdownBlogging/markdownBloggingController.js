@@ -1,7 +1,7 @@
 ({
     init: function(cmp) {
         
-		cmp.set('v.myVal',  helper.formatterTextMarkdown('v.myVal'));
+		cmp.set('v.myVal',  this.formatterTextMarkdown('v.myVal'));
         
     },
     /*init: function (component, event, helper) {
