@@ -1,5 +1,5 @@
 ({
-	saveContentAuto: function (component) {
+	/*saveContentAuto: function (component) {
 		component.set('v.myVal', this.formatterTextMarkdown(component.get('v.record').Content__c));
 
 		window.setTimeout(
@@ -44,5 +44,5 @@
 			"message": "The status post was updated to: " + status
 		});
 		resultsToast.fire();
-	}
+	}*/
 })
