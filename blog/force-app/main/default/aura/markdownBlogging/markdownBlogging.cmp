@@ -1,31 +1,41 @@
 <aura:component implements = "force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access = "global" >
     <!--Call the markdown resource-->
-    <ltng:require scripts="{!$Resource.markedJS}" styles="{!$Resource.markedCSS}"></ltng:require>
+    <ltng:require scripts = "{!$Resource.markedJS}" styles = "{!$Resource.markedCSS}"></ltng:require>
     <!--Create a attribute to use in the text section with markdown format-->            
     <aura:attribute name = "myVal" type = "String" description = "This is the text to be displayed" default="" />
     <!--Record attibute to use in the path component-->
-    <aura:attribute name="record" type="Object" description="A record object view to be displayed" />
+    <aura:attribute name = "record" type = "Object" description = "A record object view to be displayed" />
     <!--Handle to the action-->
     <aura:handler name = "init" value = "{! this }" action = "{! c.init }"/>
     <lightning:card title = "Post Content">
       <!--Call the path component-->
-      <c:postPath current="{!v.record.Status__c}"></c:postPath>
+      <c:postPath current = "{!v.record.Status__c}"></c:postPath>
       <!--Create a layout to the page-->
         <lightning:layout>
             <lightning:layoutItem size = "6" padding = "around-small">
                 <!--Text Area to write something in the left-->
                 <lightning:textarea
-                      class="slds-textarea slds-text-font_monospace" default = " " 
-                      name="myTextArea"  placeholder = "Type something interesting"
-                      value="{!v.myVal}" messageWhenValueMissing = "An empty content cannot be saved.">
+                      class = "slds-textarea slds-text-font_monospace" default = " " 
+                      name = "myTextArea"  placeholder = "Type something interesting"
+                      value = "{!v.myVal}" messageWhenValueMissing = "An empty content cannot be saved.">
                   </lightning:textarea>
             </lightning:layoutItem>
+            
             <!-- right content - editor of post's content -->
-            <div class="slds-col slds-size_6-of-12 slds-m-left_x-small slds-m-top_x-small">
-                <div class="markdown-body">
-                    <aura:unescapedHtml value="{!v.myVal}" />
+            <div class = "slds-col slds-size_6-of-12 slds-m-left_x-small slds-m-top_x-small">
+                <div class = "markdown-body">
+                    <aura:unescapedHtml value = "{!v.myVal}" />
                 </div>
             </div>
         </lightning:layout>
+        <!--Button to use to conect the status to the path-->
+        <aura:if isTrue = "{!v.record.Status__c=='Draft'}">
+            <lightning:button label = "Submit the post for review" variant = "brand" onclick = "{!c.handleSubmitReview}" />
+            <aura:set attribute = "else">
+                <aura:if isTrue = "{!v.record.Status__c=='Ready'}">
+                    <lightning:button label = "Submit the post for publish" variant = "brand" onclick = "{!c.handleSubmitPublish}" />
+                </aura:if>
+            </aura:set>
+        </aura:if>
      </lightning:card>     
 </aura:component>
