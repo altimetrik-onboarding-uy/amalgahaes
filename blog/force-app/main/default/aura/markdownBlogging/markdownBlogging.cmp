@@ -17,8 +17,9 @@
                 <lightning:textarea
                       class = "slds-textarea slds-text-font_monospace" default = " " 
                       name = "myTextArea"  placeholder = "Type something interesting"
-                      value = "{!v.myVal}" messageWhenValueMissing = "An empty content cannot be saved.">
-                  </lightning:textarea>
+                      value = "{!v.record.Content__c}" messageWhenValueMissing = "An empty content cannot be saved."
+                      aura:id="postform" required="true" onchange="{!c.handleSaveRecord}" >
+                    </lightning:textarea>
             </lightning:layoutItem>
             
             <!-- right content - editor of post's content -->

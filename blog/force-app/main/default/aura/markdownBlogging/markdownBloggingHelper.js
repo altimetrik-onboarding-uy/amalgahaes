@@ -4,16 +4,16 @@
 		return '';
 	},
 	updateSatusUnderReview: function (component) {
-		var post = component.get("v.simpleRecord");
+		var post = component.get("v.record");
 		post.Status__c = "Under Review";
-		component.set("v.simpleRecord", post);
+		component.set("v.record", post);
 		this.saveContentAuto(component);
 		this.showMessage('Under Review');
 	},
 	updateSatusPublish: function (component) {
-		var post = component.get("v.simpleRecord");
+		var post = component.get("v.record");
 		post.Status__c = "Published";
-		component.set("v.simpleRecord", post);
+		component.set("v.record", post);
 		this.saveContentAuto(component);
 		this.showMessage('Published');
 	},
