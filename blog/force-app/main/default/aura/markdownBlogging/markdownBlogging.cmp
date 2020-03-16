@@ -2,7 +2,7 @@
     <!--Call the markdown resource-->
     <ltng:require scripts="{!$Resource.markedJS}" styles="{!$Resource.markedCSS}"></ltng:require>
     <!--Create a attribute to use in the text section with markdown format-->            
-    <aura:attribute name = "myVal" type = "String" description = "This is the text to be displayed" />
+    <aura:attribute name = "myVal" type = "String" description = "This is the text to be displayed" default="" />
     <!--Handle to the action-->
     <aura:handler name = "init" value = "{! this }" action = "{! c.init }"/>
     <lightning:card title = "Post Content">
