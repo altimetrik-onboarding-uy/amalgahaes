@@ -21,7 +21,6 @@
                       aura:id="postform" required="true" onchange="{!c.handleSaveRecord}" >
                     </lightning:textarea>
             </lightning:layoutItem>
-            
             <!-- right content - editor of post's content -->
             <div class = "slds-col slds-size_6-of-12 slds-m-left_x-small slds-m-top_x-small">
                 <div class = "markdown-body">
@@ -32,13 +31,11 @@
         <!--Button to use*conect the status to the path-->
         <aura:if isTrue = "{!v.record.Status__c == 'Draft'}">
             <lightning:button label = "Submit the post for review" variant = "brand" onclick = "{!c.handleSubmitReview}" />
-           
             <aura:set attribute = "else">
                 <aura:if isTrue = "{!v.record.Status__c == 'Ready'}">
                     <lightning:button label = "Submit the post for publish" variant = "brand" onclick = "{!c.handleSubmitPublish}" />
                 </aura:if>
-            </aura:set>
-             
+            </aura:set>     
         </aura:if>
      </lightning:card>     
 </aura:component>

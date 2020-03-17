@@ -1,5 +1,5 @@
 ({
-	onRender: function (component, event, helper) {
-		helper.updatePath(component);
+	onRender: function (cmp,evt,hlpr) {
+		hlpr.updatePath(cmp);
 	}
 })

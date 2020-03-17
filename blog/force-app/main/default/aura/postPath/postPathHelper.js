@@ -1,55 +1,55 @@
 ({
-	updatePath: function (component) {
-		var currentStatus = component.get("v.current");
-		var currentStatusHtmlComponent = component.find(currentStatus);
+	updatePath: function (cmp) {
+		var currentStatus = cmp.get("v.current");
+		var currentStatusCmp = cmp.find(currentStatus);
 		switch (currentStatus) {
 			case 'Draft':
-				this.updateCurrentItemCss(currentStatusHtmlComponent);
+				this.updateItemCss(currentStatusCmp);
 				break;
 			case 'Under Review':
-				this.updatePassedItemCss(component, 'Under Review');
-				this.updateCurrentItemCss(currentStatusHtmlComponent);
+				this.updateItemCss(cmp, 'Under Review');
+				this.updateItemCss(currentStatusCmp);
 				break;
 			case 'Ready':
-				this.updatePassedItemCss(component, 'Ready');
-				this.updateCurrentItemCss(currentStatusHtmlComponent);
+				this.updatePassedItemCss(cmp, 'Ready');
+				this.updateItemCss(currentStatusCmp);
 				break;
 			case 'Published':
-				this.updatePassedItemCss(component, 'Published');
-				this.updateCurrentItemCss(currentStatusHtmlComponent);
+				this.updatePassedItemCss(cmp, 'Published');
+				this.updateItemCss(currentStatusCmp);
 				break;
 		}
 	},
-	updateCurrentItemCss: function (currentStatusHtmlComponent) {
-		$A.util.removeClass(currentStatusHtmlComponent, 'slds-is-incomplete');
-		$A.util.addClass(currentStatusHtmlComponent, 'slds-is-current');
-		$A.util.addClass(currentStatusHtmlComponent, 'slds-is-active');
+	updateItemCss: function (currentStatusCmp) {
+		$A.util.removeClass(currentStatusCmp, 'slds-is-incomplete');
+		$A.util.addClass(currentStatusCmp, 'slds-is-current');
+		$A.util.addClass(currentStatusCmp, 'slds-is-active');
 	},
-	updatePassedItemCss: function (component, status) {
+	updatePassedItemCss: function (cmp, status) {
 		switch (status) {
 			case 'Under Review':
-				var currentStatusHtmlComponent = component.find('Draft');
-				this.removeActiveAndCurrentClassPreviusItem(currentStatusHtmlComponent);
-				this.completedItemCss(currentStatusHtmlComponent);
+				var currentStatusCmp = cmp.find('Draft');
+				this.removeActiveAndCurrentClassPreviusItem(currentStatusCmp);
+				this.completedItemCss(currentStatusCmp);
 				break;
 			case 'Ready':
-				this.completedItemCss(component.find('Draft'));
-				this.completedItemCss(component.find('Under Review'));
+				this.completedItemCss(cmp.find('Draft'));
+				this.completedItemCss(cmp.find('Under Review'));
 				break;
 			case 'Published':
-				this.completedItemCss(component.find('Draft'));
-				this.completedItemCss(component.find('Under Review'));
-				this.completedItemCss(component.find('Ready'));
-				this.removeActiveAndCurrentClassPreviusItem(component.find('Ready'));
+				this.completedItemCss(cmp.find('Draft'));
+				this.completedItemCss(cmp.find('Under Review'));
+				this.completedItemCss(cmp.find('Ready'));
+				this.removeActiveAndCurrentClassPreviusItem(cmp.find('Ready'));
 				break;
 		}
 	},
-	completedItemCss: function (completedStatusHtmlComponent) {
-		$A.util.removeClass(completedStatusHtmlComponent, 'slds-is-incomplete');
-		$A.util.addClass(completedStatusHtmlComponent, 'slds-is-complete');
+	completedItemCss: function (completedStatusCmp) {
+		$A.util.removeClass(completedStatusCmp, 'slds-is-incomplete');
+		$A.util.addClass(completedStatusCmp, 'slds-is-complete');
 	},
-	removeActiveAndCurrentClassPreviusItem: function (previousStatusHtmlComponent) {
-		$A.util.removeClass(previousStatusHtmlComponent, 'slds-is-active');
-		$A.util.removeClass(previousStatusHtmlComponent, 'slds-is-current');
+	removeActiveAndCurrentClassPreviusItem: function (previousStatusCmp) {
+		$A.util.removeClass(previousStatusCmp, 'slds-is-active');
+		$A.util.removeClass(previousStatusCmp, 'slds-is-current');
 	}
 })
