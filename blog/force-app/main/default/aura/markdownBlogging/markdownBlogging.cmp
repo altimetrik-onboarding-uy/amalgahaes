@@ -7,6 +7,11 @@
     <aura:attribute name = "record" type = "Object" description = "A record object view to be displayed" />
     <!--Handle to the action-->
     <aura:handler name = "init" value = "{! this }" action = "{! c.init }"/>
+
+    <force:recordData aura:id="recordEditor" layoutType="FULL" recordId="{!v.recordId}" 
+        targetRecord="{!v.record}" targetFields="{!v.record}" mode="EDIT" />
+
+
     <lightning:card title = "Post Content">
       <!--Call the path component-->
       <c:postPath current = "{!v.record.Status__c}"></c:postPath>
@@ -28,7 +33,7 @@
                 </div>
             </div>
         </lightning:layout>
-        <!--Button to use*conect the status to the path-->
+        <!--Button to submit status-->
         <aura:if isTrue = "{!v.record.Status__c == 'Draft'}">
             <lightning:button label = "Submit the post for review" variant = "brand" onclick = "{!c.handleSubmitReview}" />
             <aura:set attribute = "else">
