@@ -1,6 +1,6 @@
 ({
 	saveContentAuto: function (component) {
-		component.set('v.myVal', this.formatterTextMarkdown(component.get('v.record').Content__c));
+		component.set('v.markDownText', this.formatterTextMarkdown(component.get('v.simpleRecord').Content__c));
 
 		window.setTimeout(
 			$A.getCallback(function () {
@@ -25,18 +25,16 @@
 
 	},
 	updateSatusUnderReview: function (component) {
-		var post = component.get("v.record");
+		var post = component.get("v.simpleRecord");
 		post.Status__c = "Under Review";
-		component.set("v.record", post);
+		component.set("v.simpleRecord", post);
 		this.saveContentAuto(component);
-		
+	
 	},
 	updateSatusPublish: function (component) {
-		var post = component.get("v.record");
+		var post = component.get("v.simpleRecord");
 		post.Status__c = "Published";
-		component.set("v.record", post);
+		component.set("v.simpleRecord", post);
 		this.saveContentAuto(component);
-		
-	},
-	
+	}
 })

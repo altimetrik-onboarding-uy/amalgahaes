@@ -1,18 +1,19 @@
 ({
-    init: function(cmp,evt, hlpr) {
-      //if (cmp.get('v.record') != 'undefined')
+    onRender: function (component, event, helper) {
+      if (component.get('v.simpleRecord') != 'undefined')
       //cmp.set('v.myVal',hlpr.formatterTextMarkdown('myVal'));
-      //cmp.set('v.myVal',hlpr.formatterTextMarkdown(component.get('v.record').Content__c));
-      cmp.set('v.myVal','');
+      //cmp.set('v.myVal',hlpr.formatterTextMarkdown(cmp.get('v.record').Content__c));
+      //cmp.set('v.myVal','');
+        component.set('v.markDownText', helper.formatterTextMarkdown(component.get('v.simpleRecord').Content__c));
     },
     handleSaveRecord: function (component, event, helper) {
       helper.saveContentAuto(component);
     },
-    handleSubmitReview: function (cmt, event, helper) {
-      helper.updateSatusUnderReview(cmt);
+    handleSubmitReview: function (component, event, helper) {
+      helper.updateSatusUnderReview(component);
     },
-    handleSubmitPublish: function (cmt, event, helper) {
-      helper.updateSatusPublish(cmt);
+    handleSubmitPublish: function (component, event, helper) {
+      helper.updateSatusPublish(component);
     }
 
 });
