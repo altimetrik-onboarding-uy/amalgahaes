@@ -16,7 +16,7 @@
         targetRecord="{!v.record}" targetFields="{!v.simpleRecord}" mode="EDIT" />   
     <!-- left content - editor of post's Detail -->
     <lightning:tabset selectedTabId="content">
-    <lightning:tab label="Content" id="content">
+    <lightning:tab label="Post Content" id="content">
       <!--Call the path component-->
       <c:postPath current="{!v.simpleRecord.Status__c}"></c:postPath>
       <!--Create a layout to the page-->
