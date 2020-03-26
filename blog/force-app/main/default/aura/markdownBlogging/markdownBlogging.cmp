@@ -1,5 +1,5 @@
-<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:appHostable" access="global">
-    <!--Call the markdown resource-->
+<aura:component implements="flexipage:availableForRecordHome,flexipage:availableForAllPageTypes,force:hasRecordId,force:appHostable" access="global">    
+<!--Call the markdown resource-->
     <ltng:require scripts = "{!$Resource.markedJS}" styles = "{!$Resource.markedCSS}"></ltng:require>
     <!--Create a attribute to use in the text section --> 
     <aura:attribute name = "record" type = "Object"/>           
