@@ -15,7 +15,7 @@ public class EmailManageUnderReview implements Schedulable{
                 Posts__c mypostID = mypost[i];
                 //Manager that will receive the emails
                 List<User> mymanagers = [ Select Id, ManagerId, Manager.Name, Manager.Email, Email FROM User Where Id =: mypostID.CreatedById ];
-                for ( Integer e = 0; e<= mymanagers.size(); e++ ) {
+                for ( Integer e = 0; e <= mymanagers.size(); e++ ) {
                 	User myUser = mymanagers[e];
                     if(myUser.Manager.Email != null){
                     	String address = myUser.Manager.Email;

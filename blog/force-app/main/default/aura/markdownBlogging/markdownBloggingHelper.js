@@ -21,7 +21,6 @@
 	},
 	formatterTextMarkdown: function (mytext) {
 		return marked(mytext);
-		//return '';
 
 	},
 	updateSatusUnderReview: function (component) {
