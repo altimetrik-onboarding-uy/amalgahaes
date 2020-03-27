@@ -1,14 +1,14 @@
 <aura:component implements="flexipage:availableForRecordHome,flexipage:availableForAllPageTypes,force:hasRecordId,force:appHostable" access="global">    
 <!--Call the markdown resource-->
     <ltng:require scripts = "{!$Resource.markedJS}" styles = "{!$Resource.markedCSS}"></ltng:require>
-    <!--Create a attribute to use in the text section --> 
+    <!--Create a attribute to be the record object --> 
     <aura:attribute name = "record" type = "Object"/>           
-    <!--Record attibute to use in the path component-->
-    <aura:attribute name="simpleRecord" type="Object"/>
+    <!--Record attibute to use in the path component this will be the post object view-->
+    <aura:attribute name="simpleRecord" type="Posts__c"/>
     <!--Error variable-->
     <aura:attribute name="recordError" type="String" description="An error message bound to force:recordData" />  
     <!-- text in markdown format -->
-    <aura:attribute name="markDownText" type="String" default=""></aura:attribute>
+    <aura:attribute name="markDownText" type="String" ></aura:attribute>
     <!--Handle to the action-->
     <aura:handler name="render" value="{!this}" action="{!c.onRender}" />
     <!--Handler para los errores-->
