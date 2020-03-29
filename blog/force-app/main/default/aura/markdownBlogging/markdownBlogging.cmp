@@ -1,0 +1,55 @@
+<aura:component implements="flexipage:availableForRecordHome,flexipage:availableForAllPageTypes,force:hasRecordId,force:appHostable" access="global">    
+<!--Call the markdown resource-->
+    <ltng:require scripts = "{!$Resource.markedJS}" styles = "{!$Resource.markedCSS}"></ltng:require>
+    <!--Create a attribute to be the record object --> 
+    <aura:attribute name = "record" type = "Object"/>           
+    <!--Record attibute to use in the path component this will be the post object view-->
+    <aura:attribute name="simpleRecord" type="Posts__c" />
+    <!--Error variable-->
+    <aura:attribute name="recordError" type="String" description="An error message bound to force:recordData" />  
+    <!-- text in markdown format -->
+    <aura:attribute name="markDownText" type="String" default=""></aura:attribute>
+    <!--Handle to the action-->
+    <aura:handler name="render" value="{!this}" action="{!c.onRender}" />
+    <!--Handler para los errores-->
+    <force:recordData  aura:id="recordLoader" layoutType="FULL" recordId="{!v.recordId}" targetError="{!v.recordError}"
+        targetRecord="{!v.record}" targetFields="{!v.simpleRecord}" mode="EDIT" />   
+    <!-- left content - editor of post's Detail -->
+    <lightning:tabset selectedTabId="content">
+    <lightning:tab label="Post Content" id="content">
+      <!--Call the path component-->
+      <c:postPath current="{!v.simpleRecord.Status__c}"></c:postPath>
+      <!--Create a layout to the page-->
+        <lightning:layout>
+            <lightning:layoutItem size = "6" padding = "around-small">
+                <!--Text Area to write something in the left-->
+                <lightning:textarea
+                      class = "slds-textarea slds-text-font_monospace"  name = "postcontent"
+                      placeholder = "Type something interesting" value="{!v.simpleRecord.Content__c}"
+                      messageWhenValueMissing = "An empty content cannot be saved."
+                      aura:id="postform" required="true" onchange="{!c.handleSaveRecord}" >
+                </lightning:textarea>
+                <!--Button to submit status-->
+                <aura:if isTrue="{!v.simpleRecord.Status__c=='Draft'}">
+                    <lightning:button label="Submit the post for review" variant="brand" onclick="{!c.handleSubmitReview}" />
+                    <aura:set attribute="else">
+                        <aura:if isTrue="{!v.simpleRecord.Status__c=='Ready'}">
+                            <lightning:button label="Submit the post for publish" variant="brand" onclick="{!c.handleSubmitPublish}" />
+                        </aura:if>
+                    </aura:set>
+                </aura:if>
+            </lightning:layoutItem>
+            <!-- right content - editor of post's Detail-->
+            <div class = "slds-col slds-size_6-of-12 slds-m-left_x-small slds-m-top_x-small">
+                <div class="markdown-body">
+                    <aura:unescapedHtml value="{!v.markDownText}" />
+                </div>
+            </div>
+            <aura:if isTrue="{!not(empty(v.recordError))}">
+                <div class="recordError">
+                    {!v.recordError}</div>
+            </aura:if>
+        </lightning:layout>    
+     </lightning:tab>
+    </lightning:tabset> 
+</aura:component>
