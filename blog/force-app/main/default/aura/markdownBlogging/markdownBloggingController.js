@@ -1,8 +1,5 @@
 ({
     onRender: function (component, event, helper) {
-      console.log('jsdjshdjshdsd');
-      console.log(component.get('v.simpleRecord'));
-      console.log('jsdjshdjshdsz');
       if (component.get('v.simpleRecord') != 'undefined')
         component.set('v.markDownText', helper.formatterTextMarkdown(component.get('v.simpleRecord').Content__c));
     },

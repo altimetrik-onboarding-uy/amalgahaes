@@ -4,7 +4,7 @@
     <!--Create a attribute to be the record object --> 
     <aura:attribute name = "record" type = "Object"/>           
     <!--Record attibute to use in the path component this will be the post object view-->
-    <aura:attribute name="simpleRecord" type="Posts__c" />
+    <aura:attribute name="simpleRecord" type="Object" />
     <!--Error variable-->
     <aura:attribute name="recordError" type="String" description="An error message bound to force:recordData" />  
     <!-- text in markdown format -->
@@ -14,7 +14,7 @@
     <!--Handler para los errores-->
     <force:recordData  aura:id="recordLoader" layoutType="FULL" recordId="{!v.recordId}" targetError="{!v.recordError}"
         targetRecord="{!v.record}" targetFields="{!v.simpleRecord}" mode="EDIT" />   
-    <!-- left content - editor of post's Detail -->
+    <!-- left content - editor of post's Detail --> 
     <lightning:tabset selectedTabId="content">
     <lightning:tab label="Post Content" id="content">
       <!--Call the path component-->
