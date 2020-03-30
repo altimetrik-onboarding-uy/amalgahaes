@@ -12,7 +12,7 @@
     <!--Handle to the action-->
     <aura:handler name="render" value="{!this}" action="{!c.onRender}" />
     <!--Handler para los errores-->
-    <force:recordData  aura:id="recordLoader" layoutType="FULL" recordId="{!v.recordId}" targetError="{!v.recordError}"
+    <force:recordData  aura:id="recordEditor" layoutType="FULL" recordId="{!v.recordId}" targetError="{!v.recordError}"
         targetRecord="{!v.record}" targetFields="{!v.simpleRecord}" mode="EDIT" />   
     <!-- left content - editor of post's Detail --> 
     <lightning:tabset selectedTabId="content">
